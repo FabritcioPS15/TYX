@@ -76,14 +76,14 @@ export default function AsesoriaConsultoria() {
         subtitle="Impulsa el crecimiento y la excelencia operativa de tu organización con nuestros expertos."
       />
 
-      <section className="py-16">
+      <section className="py-8 sm:py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-10 md:mb-12">
             <Reveal>
-              <div className="mb-6">
-                <h2 className="text-2xl font-heading font-bold text-white mb-2">Nuestros Servicios</h2>
-                <p className="text-gray-400">
+              <div className="mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">Nuestros Servicios</h2>
+                <p className="text-sm sm:text-base text-gray-400">
                   {filteredServices.length} {filteredServices.length === 1 ? 'servicio disponible' : 'servicios disponibles'}
                 </p>
               </div>
@@ -122,8 +122,8 @@ export default function AsesoriaConsultoria() {
                       key={idx}
                       onClick={() => setFilter(cat)}
                       className={`relative px-6 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 whitespace-nowrap ${filter === cat
-                        ? 'text-white'
-                        : 'text-gray-400 hover:text-gray-200'
+                          ? 'text-white'
+                          : 'text-gray-400 hover:text-gray-200'
                         }`}
                     >
                       {filter === cat && (
@@ -137,7 +137,7 @@ export default function AsesoriaConsultoria() {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredServices.map((service, index) => (
               <ConsultingCard key={service.id} {...service} index={index} />
             ))}

@@ -1,114 +1,175 @@
 import { Link } from 'react-router-dom';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaYoutube, FaTwitter, FaInstagram, FaArrowRight } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-xl">T</span>
+    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+          {/* Brand Column */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                <span className="text-white font-heading font-black text-2xl">T</span>
               </div>
-              <span className="text-xl font-heading font-bold text-primary">TYC</span>
+              <span className="text-2xl font-heading font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">TYX</span>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Asesoría, consultoría y formación profesional para empresas que buscan excelencia.
+            <p className="text-slate-400 leading-relaxed mb-6 max-w-sm">
+              Transformamos organizaciones a través de asesoría estratégica, consultoría especializada y formación de alto impacto.
             </p>
+
+            {/* Social Media */}
+            <div className="flex items-center gap-3">
+              <a
+                href="#"
+                className="group w-10 h-10 bg-white/5 hover:bg-gradient-to-br hover:from-primary hover:to-primary-dark rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+              </a>
+              <a
+                href="#"
+                className="group w-10 h-10 bg-white/5 hover:bg-gradient-to-br hover:from-primary hover:to-primary-dark rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                aria-label="YouTube"
+              >
+                <FaYoutube className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+              </a>
+              <a
+                href="#"
+                className="group w-10 h-10 bg-white/5 hover:bg-gradient-to-br hover:from-primary hover:to-primary-dark rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                aria-label="Twitter"
+              >
+                <FaTwitter className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+              </a>
+              <a
+                href="#"
+                className="group w-10 h-10 bg-white/5 hover:bg-gradient-to-br hover:from-primary hover:to-primary-dark rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                aria-label="Instagram"
+              >
+                <FaInstagram className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+              </a>
+            </div>
           </div>
 
+          {/* Navigation Column */}
           <div>
-            <h3 className="font-heading font-semibold text-gray-900 mb-4">Navegación</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/nosotros" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Nosotros
-                </Link>
-              </li>
-              <li>
-                <Link to="/asesoria-consultoria" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Asesoría y Consultoría
-                </Link>
-              </li>
-              <li>
-                <Link to="/recursos/cursos" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Recursos
-                </Link>
-              </li>
-              <li>
-                <Link to="/clientes" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Nuestros Clientes
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-heading font-semibold text-gray-900 mb-4">Recursos</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/recursos/cursos" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Cursos
-                </Link>
-              </li>
-              <li>
-                <Link to="/recursos/blog" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/recursos/podcast" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Podcast
-                </Link>
-              </li>
-              <li>
-                <Link to="/recursos/descargables" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                  Descargables
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-heading font-semibold text-gray-900 mb-4">Contacto</h3>
+            <h3 className="font-heading font-bold text-white mb-6 text-sm uppercase tracking-wider">Navegación</h3>
             <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <FaEnvelope className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <a href="mailto:contacto@consultoria.com" className="text-gray-600 hover:text-primary text-sm transition-colors">
+              <li>
+                <Link to="/nosotros" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Nosotros</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/asesoria-consultoria" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Asesoría y Consultoría</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/clientes" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Nuestros Clientes</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contacto" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Contacto</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources Column */}
+          <div>
+            <h3 className="font-heading font-bold text-white mb-6 text-sm uppercase tracking-wider">Recursos</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/recursos/cursos" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Cursos</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/recursos/blog" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Blog</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/recursos/podcast" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Podcast</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/recursos/descargables" className="group flex items-center text-slate-400 hover:text-white transition-colors">
+                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                  <span>Descargables</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div>
+            <h3 className="font-heading font-bold text-white mb-6 text-sm uppercase tracking-wider">Contacto</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start space-x-3 group">
+                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <FaEnvelope className="w-4 h-4 text-primary" />
+                </div>
+                <a href="mailto:contacto@consultoria.com" className="text-slate-400 hover:text-white transition-colors text-sm">
                   contacto@consultoria.com
                 </a>
               </li>
-              <li className="flex items-start space-x-3">
-                <FaPhone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <a href="tel:+34000000000" className="text-gray-600 hover:text-primary text-sm transition-colors">
+              <li className="flex items-start space-x-3 group">
+                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <FaPhone className="w-4 h-4 text-primary" />
+                </div>
+                <a href="tel:+34000000000" className="text-slate-400 hover:text-white transition-colors text-sm">
                   +34 000 000 000
                 </a>
               </li>
-              <li className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-gray-600 text-sm">
+              <li className="flex items-start space-x-3 group">
+                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <FaMapMarkerAlt className="w-4 h-4 text-primary" />
+                </div>
+                <span className="text-slate-400 text-sm">
                   Madrid, España
                 </span>
               </li>
             </ul>
-            <div className="flex items-center space-x-3 mt-4">
-              <a href="#" className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white text-primary transition-colors">
-                <FaLinkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white text-primary transition-colors">
-                <FaYoutube className="w-5 h-5" />
-              </a>
-            </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-200 mt-12 pt-8 text-center">
-          <p className="text-gray-600 text-sm">
-            © {currentYear} TYC Consultoría. Todos los derechos reservados.
-          </p>
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-400 text-sm">
+              © {currentYear} <span className="text-white font-semibold">TYX Consultoría</span>. Todos los derechos reservados.
+            </p>
+            <div className="flex items-center gap-6 text-sm">
+              <Link to="/privacidad" className="text-slate-400 hover:text-white transition-colors">
+                Privacidad
+              </Link>
+              <Link to="/terminos" className="text-slate-400 hover:text-white transition-colors">
+                Términos
+              </Link>
+              <Link to="/cookies" className="text-slate-400 hover:text-white transition-colors">
+                Cookies
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
