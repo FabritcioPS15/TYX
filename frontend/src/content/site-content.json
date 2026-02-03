@@ -1,0 +1,11 @@
+{
+    "home": {
+        "hero": {
+            "title": "Bienvenido a TYC",
+            "subtitle": "Expertos en Consultoría y Asesoría Empresarial"
+        }
+    },
+    "footer": {
+        "copy": "© 2026 TYC - Todos los derechos reservados"
+    }
+}

@@ -1,9 +1,14 @@
 import PageHeader from '../components/PageHeader';
+import SEO from '../components/SEO';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 
 export default function Contacto() {
   return (
-    <div>
+    <div className="flex flex-col">
+      <SEO
+        title="Contacto"
+        description="Contáctanos para obtener asesoría personalizada y soluciones a medida para tu empresa."
+      />
       <PageHeader
         title="Contacto"
         subtitle="Estamos aquí para ayudarte. Completa el formulario y nos pondremos en contacto contigo a la brevedad."

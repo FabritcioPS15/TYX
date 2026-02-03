@@ -1,5 +1,6 @@
 import PageHeader from '../components/PageHeader';
 import { Reveal } from '../components/Reveal';
+import SEO from '../components/SEO';
 import {
   FaBullseye,
   FaEye,
@@ -55,7 +56,11 @@ export default function Nosotros() {
   ];
 
   return (
-    <div>
+    <div className="flex flex-col">
+      <SEO
+        title="Sobre Nosotros"
+        description="Conoce nuestra historia, misión y los valores que nos impulsan a ofrecer la mejor consultoría empresarial."
+      />
       <PageHeader
         title="Nosotros"
         subtitle="Conoce quiénes somos, qué nos mueve y cómo trabajamos para transformar organizaciones."

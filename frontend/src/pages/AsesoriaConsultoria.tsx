@@ -79,27 +79,60 @@ export default function AsesoriaConsultoria() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+          <div className="mb-12">
             <Reveal>
-              <p className="text-gray-400 mb-4 md:mb-0">
-                Mostrando {filteredServices.length} de {services.length} servicios
-              </p>
+              <div className="mb-6">
+                <h2 className="text-2xl font-heading font-bold text-white mb-2">Nuestros Servicios</h2>
+                <p className="text-gray-400">
+                  {filteredServices.length} {filteredServices.length === 1 ? 'servicio disponible' : 'servicios disponibles'}
+                </p>
+              </div>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((cat, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setFilter(cat)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === cat
-                        ? 'bg-primary text-white'
-                        : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                      }`}
+              {/* Mobile: Enhanced Dropdown */}
+              <div className="md:hidden">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur-sm" />
+                  <select
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    className="relative w-full bg-slate-800/90 backdrop-blur-sm border-2 border-slate-700/50 rounded-xl px-5 py-4 text-white text-base font-bold focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 appearance-none cursor-pointer shadow-xl transition-all duration-300"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23F59E0B'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 1.25rem center',
+                      backgroundSize: '1.25rem',
+                    }}
                   >
-                    {cat}
-                  </button>
-                ))}
+                    {categories.map((cat, idx) => (
+                      <option key={idx} value={cat} className="bg-slate-900 text-white py-3">
+                        {cat}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Desktop: Tab Pills */}
+              <div className="hidden md:block">
+                <div className="inline-flex bg-slate-800/50 backdrop-blur-sm rounded-xl p-1.5 border border-slate-700/50">
+                  {categories.map((cat, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setFilter(cat)}
+                      className={`relative px-6 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 whitespace-nowrap ${filter === cat
+                        ? 'text-white'
+                        : 'text-gray-400 hover:text-gray-200'
+                        }`}
+                    >
+                      {filter === cat && (
+                        <span className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dark rounded-lg shadow-lg shadow-primary/20" />
+                      )}
+                      <span className="relative z-10">{cat}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </Reveal>
           </div>
