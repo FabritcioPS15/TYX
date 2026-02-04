@@ -80,7 +80,7 @@ export default function AsesoriaConsultoria() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="mb-8 sm:mb-10 md:mb-12">
-            <Reveal>
+            <Reveal width="100%">
               <div className="mb-4 sm:mb-6">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">Nuestros Servicios</h2>
                 <p className="text-sm sm:text-base text-gray-400">
@@ -89,7 +89,7 @@ export default function AsesoriaConsultoria() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.1}>
+            <Reveal delay={0.1} width="100%">
               {/* Mobile: Enhanced Dropdown */}
               <div className="md:hidden">
                 <div className="relative">
@@ -122,8 +122,8 @@ export default function AsesoriaConsultoria() {
                       key={idx}
                       onClick={() => setFilter(cat)}
                       className={`relative px-6 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 whitespace-nowrap ${filter === cat
-                          ? 'text-white'
-                          : 'text-gray-400 hover:text-gray-200'
+                        ? 'text-white'
+                        : 'text-gray-400 hover:text-gray-200'
                         }`}
                     >
                       {filter === cat && (

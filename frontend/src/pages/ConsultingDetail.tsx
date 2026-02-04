@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaCheckCircle, FaArrowLeft, FaEnvelope, FaUsers, FaChartLine, FaClock, FaAward, FaChevronDown, FaChevronUp, FaWhatsapp, FaPhone } from 'react-icons/fa';
+import { FaCheckCircle, FaArrowLeft, FaEnvelope, FaUsers, FaChartLine, FaClock, FaAward, FaChevronDown, FaWhatsapp, FaPhone } from 'react-icons/fa';
 import { Reveal } from '../components/Reveal';
 
 interface ServiceData {
@@ -465,9 +465,9 @@ export default function ConsultingDetail() {
                         </Reveal>
 
                         {/* Video Section */}
-                        <Reveal delay={0.3}>
-                            <div className="bg-[#0f1623] border border-gray-800 rounded-xl overflow-hidden">
-                                <div className="aspect-video bg-gray-900 min-h-[400px] sm:min-h-[500px] md:min-h-[450px]">
+                        <Reveal delay={0.3} width="100%">
+                            <div className="bg-[#0f1623] border border-gray-800 rounded-xl overflow-hidden shadow-2xl">
+                                <div className="aspect-video bg-gray-900">
                                     <iframe
                                         className="w-full h-full"
                                         src={service.videoUrl}
@@ -548,37 +548,6 @@ export default function ConsultingDetail() {
                                 </div>
                             </div>
                         </Reveal>
-
-                        {/* FAQ */}
-                        <Reveal delay={0.7}>
-                            <div className="bg-[#0f1623] border border-gray-800 rounded-xl p-6 sm:p-8">
-                                <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-6 sm:mb-8">
-                                    Preguntas Frecuentes
-                                </h2>
-                                <div className="space-y-4">
-                                    {service.faq.map((item, idx) => (
-                                        <div key={idx} className="border border-gray-700 rounded-lg overflow-hidden">
-                                            <button
-                                                onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                                                className="w-full flex items-center justify-between p-4 sm:p-5 bg-slate-800/30 hover:bg-slate-800/50 transition-colors text-left"
-                                            >
-                                                <span className="font-semibold text-white pr-4 text-sm sm:text-base">{item.question}</span>
-                                                {openFaq === idx ? (
-                                                    <FaChevronUp className="text-primary flex-shrink-0" />
-                                                ) : (
-                                                    <FaChevronDown className="text-primary flex-shrink-0" />
-                                                )}
-                                            </button>
-                                            {openFaq === idx && (
-                                                <div className="p-4 sm:p-5 bg-slate-900/50">
-                                                    <p className="text-gray-300 text-sm sm:text-base">{item.answer}</p>
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </Reveal>
                     </div>
 
                     {/* Sidebar */}
@@ -598,7 +567,7 @@ export default function ConsultingDetail() {
                                 </Link>
 
                                 <div className="space-y-3 mb-6">
-                                    <a href="https://wa.me/34000000000" className="flex items-center justify-center space-x-2 w-full py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors text-sm sm:text-base">
+                                    <a href="https://wa.me/34000000000" className="flex items-center justify-center space-x-2 w-full py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors text-sm sm:text-base" target="_blank" rel="noopener noreferrer">
                                         <FaWhatsapp className="w-5 h-5" />
                                         <span>WhatsApp</span>
                                     </a>
@@ -625,6 +594,50 @@ export default function ConsultingDetail() {
                             </div>
                         </Reveal>
                     </div>
+                </div>
+
+                {/* FAQ Section Full Width */}
+                <div className="mt-16 sm:mt-24">
+                    <Reveal delay={0.2} width="100%">
+                        <div className="bg-[#0f1623] border border-gray-800 rounded-3xl p-6 sm:p-10 md:p-16 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+                            {/* Decorative background element */}
+                            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-white mb-12 sm:mb-20 text-center">
+                                Preguntas <span className="text-primary italic">Frecuentes</span>
+                            </h2>
+
+                            <div className="flex flex-col space-y-4 sm:space-y-6 max-w-4xl mx-auto">
+                                {service.faq.map((item, idx) => (
+                                    <div key={idx} className="group w-full">
+                                        <div className={`border-2 transition-all duration-500 rounded-2xl overflow-hidden ${openFaq === idx ? 'border-primary bg-primary/5 shadow-xl shadow-primary/10' : 'border-gray-800 bg-slate-800/20 hover:border-gray-700'}`}>
+                                            <button
+                                                onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                                                className="w-full flex items-center justify-between p-6 sm:p-8 text-left transition-all"
+                                            >
+                                                <span className={`font-bold pr-6 text-base sm:text-lg md:text-xl transition-colors duration-300 ${openFaq === idx ? 'text-primary' : 'text-white'}`}>
+                                                    {item.question}
+                                                </span>
+                                                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${openFaq === idx ? 'bg-primary text-white rotate-180 shadow-lg shadow-primary/30' : 'bg-gray-800 text-gray-400'}`}>
+                                                    <FaChevronDown className="w-4 h-4" />
+                                                </div>
+                                            </button>
+
+                                            <div
+                                                className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === idx ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                                            >
+                                                <div className="p-6 sm:p-8 pt-0 border-t border-gray-800/50">
+                                                    <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
+                                                        {item.answer}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </Reveal>
                 </div>
             </div>
         </div>

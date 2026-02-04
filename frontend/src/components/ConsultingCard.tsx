@@ -17,8 +17,8 @@ export const ConsultingCard = ({
     index
 }: ConsultingCardProps) => {
     return (
-        <Reveal delay={index * 0.1} className="h-full">
-            <div className="bg-[#0f1623] rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 h-full flex flex-col group border border-gray-800">
+        <Reveal delay={index * 0.1} width="100%" className="h-full">
+            <div className="bg-[#0f1623] rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 h-full w-full flex flex-col group border border-gray-800">
                 <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                     <img
                         src={image}

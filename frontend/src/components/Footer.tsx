@@ -1,11 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaYoutube, FaTwitter, FaInstagram, FaArrowRight } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
+  };
 
   return (
-    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden border-t border-white/5">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]" />
@@ -63,26 +69,26 @@ export default function Footer() {
             <h3 className="font-heading font-bold text-white mb-6 text-sm uppercase tracking-wider">Navegación</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/nosotros" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/nosotros" className={`group flex items-center transition-all ${isActive('/nosotros') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/nosotros') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Nosotros</span>
                 </Link>
               </li>
               <li>
-                <Link to="/asesoria-consultoria" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/asesoria-consultoria" className={`group flex items-center transition-all ${isActive('/asesoria-consultoria') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/asesoria-consultoria') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Asesoría y Consultoría</span>
                 </Link>
               </li>
               <li>
-                <Link to="/clientes" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/clientes" className={`group flex items-center transition-all ${isActive('/clientes') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/clientes') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Nuestros Clientes</span>
                 </Link>
               </li>
               <li>
-                <Link to="/contacto" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/contacto" className={`group flex items-center transition-all ${isActive('/contacto') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/contacto') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Contacto</span>
                 </Link>
               </li>
@@ -94,26 +100,26 @@ export default function Footer() {
             <h3 className="font-heading font-bold text-white mb-6 text-sm uppercase tracking-wider">Recursos</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/recursos/cursos" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/recursos/cursos" className={`group flex items-center transition-all ${isActive('/recursos/cursos') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/recursos/cursos') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Cursos</span>
                 </Link>
               </li>
               <li>
-                <Link to="/recursos/blog" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/recursos/blog" className={`group flex items-center transition-all ${isActive('/recursos/blog') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/recursos/blog') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Blog</span>
                 </Link>
               </li>
               <li>
-                <Link to="/recursos/podcast" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/recursos/podcast" className={`group flex items-center transition-all ${isActive('/recursos/podcast') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/recursos/podcast') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Podcast</span>
                 </Link>
               </li>
               <li>
-                <Link to="/recursos/descargables" className="group flex items-center text-slate-400 hover:text-white transition-colors">
-                  <FaArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
+                <Link to="/recursos/descargables" className={`group flex items-center transition-all ${isActive('/recursos/descargables') ? 'text-primary font-bold' : 'text-slate-400 hover:text-white'}`}>
+                  <FaArrowRight className={`w-3 h-3 mr-2 transition-all ${isActive('/recursos/descargables') ? 'opacity-100 ml-0' : 'opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0'}`} />
                   <span>Descargables</span>
                 </Link>
               </li>

@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { IoMenu, IoClose, IoChevronDown } from 'react-icons/io5';
+import { motion } from 'framer-motion';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [recursosOpen, setRecursosOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -69,31 +71,88 @@ export default function Header() {
             <nav className="hidden lg:flex items-center space-x-2">
               <Link
                 to="/nosotros"
+                onMouseEnter={() => setHoveredPath('/nosotros')}
+                onMouseLeave={() => setHoveredPath(null)}
                 className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full hover:bg-slate-50 ${isActive('/nosotros') ? 'text-primary' : 'text-slate-600 hover:text-primary'
                   }`}
               >
                 Nosotros
-                <span className={`absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-secondary transform transition-all duration-300 ${isActive('/nosotros') ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
-                  }`}></span>
+                {isActive('/nosotros') && (
+                  <motion.div
+                    layoutId="active-underline"
+                    className="absolute -bottom-1 left-2 right-2 h-0.5 bg-secondary rounded-full"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {hoveredPath === '/nosotros' && !isActive('/nosotros') && (
+                  <motion.div
+                    layoutId="hover-underline"
+                    className="absolute -bottom-1 left-2 right-2 h-0.5 bg-secondary/50 rounded-full"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  />
+                )}
               </Link>
 
               <Link
                 to="/asesoria-consultoria"
+                onMouseEnter={() => setHoveredPath('/asesoria-consultoria')}
+                onMouseLeave={() => setHoveredPath(null)}
                 className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full hover:bg-slate-50 ${isActive('/asesoria-consultoria') ? 'text-primary' : 'text-slate-600 hover:text-primary'
                   }`}
               >
                 Asesoría y Consultoría
-                <span className={`absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-secondary transform transition-all duration-300 ${isActive('/asesoria-consultoria') ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
-                  }`}></span>
+                {isActive('/asesoria-consultoria') && (
+                  <motion.div
+                    layoutId="active-underline"
+                    className="absolute -bottom-1 left-2 right-2 h-0.5 bg-secondary rounded-full"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {hoveredPath === '/asesoria-consultoria' && !isActive('/asesoria-consultoria') && (
+                  <motion.div
+                    layoutId="hover-underline"
+                    className="absolute -bottom-1 left-2 right-2 h-0.5 bg-secondary/50 rounded-full"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  />
+                )}
               </Link>
 
-              <div className="relative group">
+              <div className="relative group"
+                onMouseEnter={() => setHoveredPath('/recursos')}
+                onMouseLeave={() => setHoveredPath(null)}
+              >
                 <button
-                  className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading flex items-center space-x-1 rounded-full hover:bg-slate-50 ${isActive('/recursos') ? 'text-primary' : 'text-slate-600 hover:text-primary'
+                  className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading flex items-center space-x-1 rounded-full hover:bg-slate-50 relative group ${isActive('/recursos') ? 'text-primary' : 'text-slate-600 hover:text-primary'
                     }`}
                 >
                   <span>Recursos</span>
                   <IoChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+                  {isActive('/recursos') && (
+                    <motion.div
+                      layoutId="active-underline"
+                      className="absolute -bottom-1 left-2 right-8 h-0.5 bg-secondary rounded-full"
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      animate={{ scaleX: 1, opacity: 1 }}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  {hoveredPath === '/recursos' && !isActive('/recursos') && (
+                    <motion.div
+                      layoutId="hover-underline"
+                      className="absolute -bottom-1 left-2 right-8 h-0.5 bg-secondary/50 rounded-full"
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      animate={{ scaleX: 1, opacity: 1 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    />
+                  )}
                 </button>
 
                 <div className="absolute top-full left-0 pt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
@@ -116,12 +175,30 @@ export default function Header() {
 
               <Link
                 to="/clientes"
+                onMouseEnter={() => setHoveredPath('/clientes')}
+                onMouseLeave={() => setHoveredPath(null)}
                 className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full hover:bg-slate-50 ${isActive('/clientes') ? 'text-primary' : 'text-slate-600 hover:text-primary'
                   }`}
               >
                 Nuestros Clientes
-                <span className={`absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-secondary transform transition-all duration-300 ${isActive('/clientes') ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
-                  }`}></span>
+                {isActive('/clientes') && (
+                  <motion.div
+                    layoutId="active-underline"
+                    className="absolute -bottom-1 left-2 right-2 h-0.5 bg-secondary rounded-full"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {hoveredPath === '/clientes' && !isActive('/clientes') && (
+                  <motion.div
+                    layoutId="hover-underline"
+                    className="absolute -bottom-1 left-2 right-2 h-0.5 bg-secondary/50 rounded-full"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  />
+                )}
               </Link>
 
               <Link
