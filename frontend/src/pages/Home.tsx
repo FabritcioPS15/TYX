@@ -8,12 +8,12 @@ import SEO from '../components/SEO';
 // Componente para contador animado (simplificado)
 const StatCard = ({ icon: Icon, value, label, delay = 0 }: any) => {
   return (
-    <Reveal delay={delay} className="w-full">
-      <div className="group p-8 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+    <Reveal delay={delay} width="100%" className="flex justify-center">
+      <div className="group p-8 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center w-full max-w-sm">
         <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
           <Icon className="w-8 h-8 text-primary group-hover:text-white" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center">
           <span className="text-4xl font-heading font-bold text-slate-900 mb-2">{value}</span>
           <span className="text-slate-500 font-medium">{label}</span>
         </div>
@@ -185,7 +185,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <Reveal>
+            <Reveal width="100%" className="flex flex-col items-center text-center">
               <span className="text-secondary font-black uppercase tracking-widest text-sm mb-4 inline-block">Soluciones Integrales</span>
               <h2 className="text-4xl md:text-5xl font-heading font-black mb-6">Nuestras áreas de especialidad</h2>
               <p className="text-slate-400 max-w-2xl mx-auto text-lg">
