@@ -68,7 +68,7 @@ export default function Home() {
       />
 
       {/* Hero Section Modernizado */}
-      <section className="relative h-[95vh] min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -86,7 +86,7 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-32 md:pt-40">
           <div className="max-w-4xl">
             <AnimatePresence mode="wait">
               <motion.div

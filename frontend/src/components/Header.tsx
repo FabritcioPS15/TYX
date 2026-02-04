@@ -9,6 +9,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const location = useLocation();
+  const isHome = location.pathname === '/';
+  const isTransparent = isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,21 +48,26 @@ export default function Header() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-lg py-2 border-b border-white/20'
-          : 'bg-white/90 backdrop-blur-sm py-4'
+        className={`z-40 transition-all duration-300 ${isTransparent
+          ? 'absolute top-0 lg:top-9 left-0 w-full bg-transparent py-5'
+          : isScrolled
+            ? 'sticky top-0 bg-white/80 backdrop-blur-md shadow-lg py-2 border-b border-white/20'
+            : 'sticky top-0 bg-white/90 backdrop-blur-sm py-4'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 group z-50 relative">
-              <div className={`transition-all duration-300 flex items-center justify-center rounded-lg bg-primary shadow-lg shadow-primary/30 ${isScrolled ? 'w-9 h-9' : 'w-11 h-11'
+              <div className={`transition-all duration-300 flex items-center justify-center rounded-lg ${isTransparent
+                ? 'bg-white/10 border border-white/20 shadow-none'
+                : 'bg-primary shadow-lg shadow-primary/30'
+                } ${isScrolled ? 'w-9 h-9' : 'w-11 h-11'
                 }`}>
                 <span className="text-white font-heading font-bold text-lg">T</span>
               </div>
               <div className="flex flex-col">
-                <span className={`font-heading font-bold text-primary leading-tight transition-all duration-300 ${isScrolled ? 'text-xl' : 'text-2xl'
+                <span className={`font-heading font-bold leading-tight transition-all duration-300 ${isTransparent ? 'text-white text-3xl' : isScrolled ? 'text-primary text-xl' : 'text-primary text-2xl'
                   }`}>
                   TYC
                 </span>
@@ -73,7 +80,9 @@ export default function Header() {
                 to="/nosotros"
                 onMouseEnter={() => setHoveredPath('/nosotros')}
                 onMouseLeave={() => setHoveredPath(null)}
-                className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full hover:bg-slate-50 ${isActive('/nosotros') ? 'text-primary' : 'text-slate-600 hover:text-primary'
+                className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full ${isTransparent
+                  ? isActive('/nosotros') ? 'text-white' : 'text-white/80 hover:text-white hover:bg-white/10'
+                  : `hover:bg-slate-50 ${isActive('/nosotros') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`
                   }`}
               >
                 Nosotros
@@ -101,7 +110,9 @@ export default function Header() {
                 to="/asesoria-consultoria"
                 onMouseEnter={() => setHoveredPath('/asesoria-consultoria')}
                 onMouseLeave={() => setHoveredPath(null)}
-                className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full hover:bg-slate-50 ${isActive('/asesoria-consultoria') ? 'text-primary' : 'text-slate-600 hover:text-primary'
+                className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full ${isTransparent
+                  ? isActive('/asesoria-consultoria') ? 'text-white' : 'text-white/80 hover:text-white hover:bg-white/10'
+                  : `hover:bg-slate-50 ${isActive('/asesoria-consultoria') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`
                   }`}
               >
                 Asesoría y Consultoría
@@ -130,7 +141,9 @@ export default function Header() {
                 onMouseLeave={() => setHoveredPath(null)}
               >
                 <button
-                  className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading flex items-center space-x-1 rounded-full hover:bg-slate-50 relative group ${isActive('/recursos') ? 'text-primary' : 'text-slate-600 hover:text-primary'
+                  className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading flex items-center space-x-1 rounded-full relative group ${isTransparent
+                    ? isActive('/recursos') ? 'text-white' : 'text-white/80 hover:text-white hover:bg-white/10'
+                    : `hover:bg-slate-50 ${isActive('/recursos') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`
                     }`}
                 >
                   <span>Recursos</span>
@@ -177,7 +190,9 @@ export default function Header() {
                 to="/clientes"
                 onMouseEnter={() => setHoveredPath('/clientes')}
                 onMouseLeave={() => setHoveredPath(null)}
-                className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full hover:bg-slate-50 ${isActive('/clientes') ? 'text-primary' : 'text-slate-600 hover:text-primary'
+                className={`px-4 py-2 text-sm font-semibold transition-all duration-300 font-heading relative group rounded-full ${isTransparent
+                  ? isActive('/clientes') ? 'text-white' : 'text-white/80 hover:text-white hover:bg-white/10'
+                  : `hover:bg-slate-50 ${isActive('/clientes') ? 'text-primary' : 'text-slate-600 hover:text-primary'}`
                   }`}
               >
                 Nuestros Clientes
@@ -215,7 +230,7 @@ export default function Header() {
               className="lg:hidden p-2.5 rounded-full text-slate-700 hover:text-primary hover:bg-slate-100 transition-colors"
               aria-label="Open menu"
             >
-              <IoMenu className="w-7 h-7" />
+              <IoMenu className={`w-7 h-7 transition-colors ${isTransparent ? 'text-white' : 'text-slate-700 hover:text-primary'}`} />
             </button>
           </div>
         </div>
